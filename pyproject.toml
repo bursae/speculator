@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "speculator"
+version = "0.1.0"
+description = "Deterministic, polite, domain-bounded web crawler"
+requires-python = ">=3.11"
+dependencies = [
+  "requests>=2.31.0",
+  "beautifulsoup4>=4.12.0",
+]
+
+[project.scripts]
+speculator = "speculator.cli:main"
