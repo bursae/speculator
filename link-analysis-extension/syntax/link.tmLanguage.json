@@ -1,0 +1,22 @@
+{
+  "scopeName": "source.linkmd",
+  "name": "Link Markdown",
+  "patterns": [
+    {
+      "match": "^\\[(person|org|place|asset)\\]",
+      "name": "keyword.control.entity.linkmd"
+    },
+    {
+      "match": "->",
+      "name": "keyword.operator.relationship.linkmd"
+    },
+    {
+      "match": ":",
+      "name": "punctuation.separator.relationship.linkmd"
+    },
+    {
+      "match": "^(\\d{4}-\\d{2}-\\d{2})",
+      "name": "constant.numeric.date.linkmd"
+    }
+  ]
+}

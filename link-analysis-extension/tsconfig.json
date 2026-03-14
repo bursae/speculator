@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "lib": ["ES2022", "DOM"],
+    "moduleResolution": "node",
+    "strict": true,
+    "rootDir": ".",
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "types": ["node", "jest", "vscode"],
+    "jsx": "react-jsx",
+    "outDir": "out"
+  },
+  "include": ["src", "webview/src", "test", "esbuild.js", "webview/vite.config.ts"]
+}

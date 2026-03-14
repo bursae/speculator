@@ -1,0 +1,121 @@
+{
+  "name": "link-analysis-extension",
+  "displayName": "Link Analysis",
+  "description": "Local-first structured link analysis in VS Code.",
+  "version": "0.0.1",
+  "publisher": "local",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "activationEvents": [
+    "onCommand:linkAnalysis.openGraph",
+    "onCommand:linkAnalysis.refreshGraph",
+    "onCommand:linkAnalysis.exportGraphJson",
+    "workspaceContains:**/*.link.md"
+  ],
+  "main": "./dist/extension.js",
+  "files": [
+    "dist",
+    "webview/dist",
+    "syntax",
+    "media",
+    "language-configuration.json",
+    "README.md",
+    "package.json"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "linkAnalysis.openGraph",
+        "title": "Link Analysis: Open Graph"
+      },
+      {
+        "command": "linkAnalysis.refreshGraph",
+        "title": "Link Analysis: Refresh Graph"
+      },
+      {
+        "command": "linkAnalysis.validateWorkspace",
+        "title": "Link Analysis: Validate Workspace"
+      },
+      {
+        "command": "linkAnalysis.exportGraphJson",
+        "title": "Link Analysis: Export Graph JSON"
+      },
+      {
+        "command": "linkAnalysis.revealItem",
+        "title": "Link Analysis: Reveal Item"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "linkAnalysis",
+          "title": "Link Analysis",
+          "icon": "media/link-analysis.svg"
+        }
+      ]
+    },
+    "views": {
+      "linkAnalysis": [
+        {
+          "id": "linkAnalysis.entities",
+          "name": "Entity Explorer"
+        }
+      ]
+    },
+    "languages": [
+      {
+        "id": "linkmd",
+        "aliases": [
+          "Link Markdown"
+        ],
+        "extensions": [
+          ".link.md"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "linkmd",
+        "scopeName": "source.linkmd",
+        "path": "./syntax/link.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "npm run build:extension && npm run build:webview",
+    "build:extension": "node esbuild.js",
+    "build:webview": "vite build --config webview/vite.config.ts",
+    "compile": "npm run build",
+    "watch": "node esbuild.js --watch",
+    "watch:webview": "vite build --watch --config webview/vite.config.ts",
+    "test": "jest --runInBand"
+  },
+  "dependencies": {
+    "cytoscape": "^3.29.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20.16.5",
+    "@types/react": "^18.3.8",
+    "@types/react-dom": "^18.3.0",
+    "@types/vscode": "^1.90.0",
+    "@vitejs/plugin-react": "^4.3.2",
+    "esbuild": "^0.24.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.7"
+  }
+}
